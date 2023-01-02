@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdoptController;
+use App\Http\Controllers\CatController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\VolunteerController;
+use App\Models\Adopt;
+use App\Models\Cat;
+use App\Models\Schedule;
+use App\Models\Volunteer;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,8 +33,8 @@ Route::get('/guest/home', function () {
 });
 
 Route::get('/guest/about-us', function () {
-    return Inertia::render('Guest/AboutUs')->name('about-us');
-});
+    return Inertia::render('Guest/AboutUs');
+})->name('about-us');
 Route::get('/guest/adopt', function () {
     return Inertia::render('Guest/Adopt');
 });
@@ -40,12 +48,33 @@ Route::get('/guest/contact-us', function () {
     return Inertia::render('Guest/ContactUs');
 });
 
+Route::get('/', function () {
+    return Inertia::render('Auth/Login', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+
+    Route::get('dashboard', function () {
+        return Inertia::render('Dashboard', [
+            'catCount' => Cat::all()->count(),
+            'adoptionCount' => Adopt::all()->count(),
+            'scheduleCount' => Schedule::all()->count(),
+            'volunteerCount' => Volunteer::all()->count()
+        ]);
     })->name('dashboard');
+
+
+    Route::resource('adopts', AdoptController::class);
+    Route::resource('cats', CatController::class);
+    Route::resource('schedules', ScheduleController::class);
+    Route::resource('volunteers', VolunteerController::class);
 });
