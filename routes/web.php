@@ -23,39 +23,43 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/guest/home', function () {
+Route::get('/', function () {
     return Inertia::render('Guest/Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
 
-Route::get('/guest/about-us', function () {
-    return Inertia::render('Guest/AboutUs');
-})->name('about-us');
-Route::get('/guest/adopt', function () {
-    return Inertia::render('Guest/Adopt');
-});
-Route::get('/guest/volunteer', function () {
-    return Inertia::render('Guest/Volunteer');
-});
-Route::get('/guest/ways-to-help', function () {
-    return Inertia::render('Guest/WaysToHelp');
-});
-Route::get('/guest/contact-us', function () {
-    return Inertia::render('Guest/ContactUs');
-});
-
-Route::get('/', function () {
-    return Inertia::render('Auth/Login', [
+Route::get('home', function () {
+    return Inertia::render('Guest/Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
+
+Route::get('about-us', function () {
+    return Inertia::render('Guest/AboutUs');
+})->name('about-us');
+
+Route::get('adopt', function () {
+    return Inertia::render('Guest/Adopt');
+})->name('adopt');
+
+Route::get('volunteer', function () {
+    return Inertia::render('Guest/Volunteer');
+})->name('volunteer');
+
+Route::get('ways-to-help', function () {
+    return Inertia::render('Guest/WaysToHelp');
+})->name('ways-to-help');
+
+Route::get('contact-us', function () {
+    return Inertia::render('Guest/ContactUs');
+})->name('contact-us');
 
 Route::middleware([
     'auth:sanctum',
