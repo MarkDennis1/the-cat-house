@@ -314,13 +314,6 @@
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                             <div class="overflow-hidden sm:rounded-lg p-4">
-                                <div class="flex justify-end items-center">
-                                    <Link :href="route('adopts.create')" type="button"
-                                        class="flex gap-1 justify-center items-center py-2 px-3 text-sm font-medium text-center rounded-lg text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300">
-                                    <h2>My Adoption Request</h2>
-                                    </Link>
-                                </div>
-
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center">
                                     <button @click="openModal(cat)" v-for="cat in cats"
                                         class="bg-slate-100 p-4 border-2 rounded-xl m-2 drop-shadow-md">
