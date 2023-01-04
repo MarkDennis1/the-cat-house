@@ -46,7 +46,20 @@ Route::get('about-us', function () {
 })->name('about-us');
 
 Route::get('adopt', function () {
-    return Inertia::render('Guest/Adopt');
+    $cats = Cat::all();
+    return Inertia::render('Guest/Adopt', [
+        'cats' => $cats->map(function ($cat) {
+            return [
+                'id' => $cat->id,
+                'name' => $cat->name,
+                'gender' => $cat->gender,
+                'age_category' => $cat->age_category,
+                'tags' => $cat->tags,
+                'color' => $cat->color,
+                'image_path' => asset('storage/' . $cat->image_path),
+            ];
+        })
+    ]);
 })->name('adopt');
 
 Route::get('volunteer', function () {

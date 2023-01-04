@@ -198,6 +198,21 @@ defineProps({
                         />
                         <InputError :message="form.errors.color" />
                     </div>
+                    <div
+                        class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800"
+                    >
+                        <label
+                            for="color"
+                            class="block mb-2 text-sm font-medium text-gray-900"
+                            >Description (optional)</label
+                        >
+                        <textarea
+                            id="comment"
+                            rows="4"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Cat short description..."
+                        ></textarea>
+                    </div>
                 </div>
                 <div class="flex items-center justify-end py-4 px-6">
                     <button
