@@ -214,7 +214,7 @@ defineProps({
                                     </td>
                                     <td class="py-4 px-6">{{ cat.tags }}</td>
                                     <td class="py-4 px-6">{{ cat.color }}</td>
-                                    <td class="flex gap-1 py-4 px-6">
+                                    <td class="py-4 flex items-center justify gap-1">
                                         <button @click="openModal(true, cat)" type="button"
                                             class="flex items-center gap-1 py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
