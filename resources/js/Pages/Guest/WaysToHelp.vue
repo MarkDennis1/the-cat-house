@@ -37,6 +37,19 @@
                         </div>
                     </div>
 
+                    <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-6 sm:block">
+                        <Link v-if="$page.props.user" :href="route('dashboard')"
+                            class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</Link>
+
+                        <template v-else>
+                            <Link :href="route('login')" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                            in</Link>
+
+                            <Link v-if="canRegister" :href="route('register')"
+                                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</Link>
+                        </template>
+                    </div>
+
                     <!-- Hamburger -->
                     <div class="-mr-2 flex items-center sm:hidden">
                         <button
@@ -238,6 +251,11 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 const showingNavigationDropdown = ref(false);
+
+defineProps({
+    canLogin: Boolean,
+    canRegister: Boolean,
+});
 </script>
 
 <style scoped>
