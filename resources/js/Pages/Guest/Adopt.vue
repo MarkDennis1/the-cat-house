@@ -108,7 +108,7 @@
             <Modal :show="showModal">
                 <div class="p-4">
                     <div class="flex items-center justify-between py-1 px-4">
-                        <h1 class="font-bold text-xl">Apply now</h1>
+                        <h1 class="font-bold text-xl"></h1>
 
                         <button @click="closeModal" type="button" class="">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
