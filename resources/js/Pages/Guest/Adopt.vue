@@ -117,130 +117,16 @@
                         </button>
                     </div>
                     <form class="px-4">
-                        <div class="h-[72vh] overflow-auto">
+                        <div class="overflow-auto">
                             <div class="flex justify-between items-center gap-2 px-4 py-6">
                                 <img :src="form.catImg" class="w-6/12 rounded-full" />
-                                <div class="w-6/12 text-center">
-                                    <p class="font-bold">{{ form.catName }}</p>
-                                    <p class="">{{ form.catAge }}</p>
-                                    <p class="">{{ form.catTags }}</p>
-                                    <p class="">{{ form.catColor }}</p>
+                                <div class="w-6/12 pl-5">
+                                    <p class="font-bold">Cat name: <span class="font-normal">{{ form.catName }}</span></p>
+                                    <p class="font-bold">Cat age: <span class="font-normal">{{ form.catAge }}</span></p>
+                                    <p class="font-bold">Cat tags: <span class="font-normal">{{ form.catTags }}</span></p>
+                                    <p class="font-bold">Cat color: <span class="font-normal">{{ form.catColor }}</span></p>
                                 </div>
                             </div>
-                            <div class="flex justify-center p-4">
-                                <InputError :message="form.errors.catID" />
-                            </div>
-
-                            <div class="flex justify-between items-center gap-3">
-                                <div class="mb-6 w-full">
-                                    <label for="fname"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
-                                        Name</label>
-                                    <input type="text" id="fname"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.fname" />
-                                    <InputError :message="form.errors.fname" />
-                                </div>
-                                <div class="mb-6 w-full">
-                                    <label for="lname"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                                        Name</label>
-                                    <input type="text" id="lname"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.lname" />
-                                    <InputError :message="form.errors.lname" />
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between items-center gap-3">
-                                <div class="mb-6 w-full">
-                                    <label for="address"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                    <input type="text" id="address"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.address" />
-                                    <InputError :message="form.errors.address" />
-                                </div>
-                                <div class="mb-6 w-full">
-                                    <label for="number"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
-                                        Number</label>
-                                    <input type="number" id="number"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.phoneNumber" />
-                                    <InputError :message="form.errors.phoneNumber" />
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between items-center gap-3">
-                                <div class="mb-6 w-full">
-                                    <label for="age"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                                    <input type="number" id="age"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.age" />
-                                    <InputError :message="form.errors.age" />
-                                </div>
-                                <div class="mb-6 w-full">
-                                    <label for="email"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
-                                        Address</label>
-                                    <input type="email" id="email"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.email" />
-                                    <InputError :message="form.errors.email" />
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between items-center gap-3">
-                                <div class="mb-6 w-full">
-                                    <label for="citizenship"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Citizenship</label>
-                                    <input type="text" id="citizenship"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.citizenship" />
-                                    <InputError :message="form.errors.citizenship" />
-                                </div>
-                                <div class="mb-6 w-full">
-                                    <label for="occupation"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Occupation</label>
-                                    <input type="text" id="occupation"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        v-model="form.occupation" />
-                                    <InputError :message="form.errors.occupation" />
-                                </div>
-                            </div>
-                            <div v-for="question in form.radioQuestion">
-                                <label for="occupation"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
-        question.question
-}}</label>
-                                <div class="flex items-start mb-6">
-                                    <div class="flex items-center mb-4">
-                                        <input v-model="question.answer" id="readio-yes" type="radio" :value="true"
-                                            :name="question.question"
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="readio-yes-1"
-                                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
-                                    </div>
-                                </div>
-                                <div class="flex items-start mb-6">
-                                    <div class="flex items-center mb-4">
-                                        <input v-model="question.answer" id="radio-no" type="radio" :value="false"
-                                            :name="question.question"
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="radio-no"
-                                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-end py-1 px-4">
-                            <Link :href="route('adopts.index')" type="button"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <h2>Submit</h2>
-                            </Link>
                         </div>
                     </form>
                 </div>
