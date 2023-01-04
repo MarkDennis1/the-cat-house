@@ -55,20 +55,22 @@
                         <button
                             class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition"
                             @click="
-    showingNavigationDropdown =
-    !showingNavigationDropdown
-">
+                                showingNavigationDropdown =
+                                !showingNavigationDropdown
+                            ">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path :class="{
-    hidden: showingNavigationDropdown,
-    'inline-flex':
-        !showingNavigationDropdown,
-}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    hidden: showingNavigationDropdown,
+                                    'inline-flex':
+                                        !showingNavigationDropdown,
+                                }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
                                 <path :class="{
-    hidden: !showingNavigationDropdown,
-    'inline-flex':
-        showingNavigationDropdown,
-}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    hidden: !showingNavigationDropdown,
+                                    'inline-flex':
+                                        showingNavigationDropdown,
+                                }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
@@ -76,9 +78,9 @@
             </div>
 
             <div :class="{
-    block: showingNavigationDropdown,
-    hidden: !showingNavigationDropdown,
-}" class="sm:hidden transition-all">
+                block: showingNavigationDropdown,
+                hidden: !showingNavigationDropdown,
+            }" class="sm:hidden transition-all">
                 <div class="pt-2 pb-3 space-y-1">
                     <ResponsiveNavLink href="home" :active="route().current('home')">
                         Home
@@ -121,10 +123,13 @@
                             <div class="flex justify-between items-center gap-2 px-4 py-6">
                                 <img :src="form.catImg" class="w-6/12 rounded-full" />
                                 <div class="w-6/12 pl-5">
-                                    <p class="font-bold">Cat name: <span class="font-normal">{{ form.catName }}</span></p>
+                                    <p class="font-bold">Cat name: <span class="font-normal">{{ form.catName }}</span>
+                                    </p>
                                     <p class="font-bold">Cat age: <span class="font-normal">{{ form.catAge }}</span></p>
-                                    <p class="font-bold">Cat tags: <span class="font-normal">{{ form.catTags }}</span></p>
-                                    <p class="font-bold">Cat color: <span class="font-normal">{{ form.catColor }}</span></p>
+                                    <p class="font-bold">Cat tags: <span class="font-normal">{{ form.catTags }}</span>
+                                    </p>
+                                    <p class="font-bold">Cat color: <span class="font-normal">{{ form.catColor }}</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -197,6 +202,43 @@
                         <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
                         <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
                     </div>
+
+                    <p class="mb-10 text-xl font-semibold uppercase">
+                        Rescue story of cat Evie
+                    </p>
+
+                    <div class="flex items-center justify-center gap-10">
+                        <div class="bg-slate-100 w-1/3 h-96 px-10 py-5 flex flex-col items-center gap-5 rounded-lg border">
+                            <img src="https://i.ibb.co/5sGHZxv/cat-story-01.png" alt="cat-story-01" border="0"
+                                class="w-40 h-40 rounded-lg">
+
+                            <p>
+                                Si Evie ay natagpuan sa isang palengke, aksidente siyang nakita at natagpuan na halos
+                                naipit na ng sasakyan. Malakas ang ulan at baha na sa palengke kaya naman ni-rescue si
+                                Evie at inilagay sa bag upang iuwi sa The Cat House.Si Evie ay natagpuan sa isang
+                                palengke, aksidente siyang nakita at natagpuan na halos
+                                naipit na ng sasakyan. Malakas ang ulan at baha na sa palengke kaya naman ni-rescue si
+                                Evie at inilagay sa bag upang iuwi sa The Cat House.
+                            </p>
+
+                        </div>
+
+                        <div class="bg-slate-100 w-1/3 h-96 px-10 py-5 flex flex-col items-center gap-5 rounded-lg border">
+                            <img src="https://i.ibb.co/MNPsVht/cat-story-02.png" alt="cat-story-02" border="0"
+                                class="w-40 h-40 rounded-lg">
+
+                            <p>
+                                Ngayon ay eto na si Evie, malusog at malakas dahil sa tulong ng The Cat House.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 pb-10 text-center">
+                    <div class="px-10">
+                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
+                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
+                    </div>
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                             <div class="overflow-hidden sm:rounded-lg p-4">
@@ -219,8 +261,8 @@
                                                 <span class="font-bold">Color:
                                                 </span>
                                                 <span>{{
-        cat.age_category
-}}</span>
+                                                    cat.age_category
+                                                }}</span>
                                             </p>
                                             <p class="">
                                                 <span class="font-bold">
@@ -228,8 +270,8 @@
                                                 </span>
                                                 <span class="keep-all px-2 mx-1 rounded-full text-sm bg-slate-400"
                                                     v-for="tag in cat.tags.split(
-    ','
-)">{{ tag }}</span>
+                                                        ','
+                                                    )">{{ tag }}</span>
                                             </p>
                                             <p class="">
                                                 <span class="font-bold">Color:
