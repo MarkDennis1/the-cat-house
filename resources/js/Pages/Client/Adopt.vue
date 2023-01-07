@@ -9,17 +9,17 @@ import { Link, useForm } from "@inertiajs/inertia-vue3";
 const showModal = ref(false);
 
 const form = useForm({
-    catID: "",
+    cat_id: "",
     catImg: "",
     catName: "",
     catAge: "",
     catTags: "",
     catColor: "",
-    userID: "",
-    fname: "",
-    lname: "",
+    user_id: "",
+    first_name: "",
+    last_name: "",
     address: "",
-    phoneNumber: "",
+    phone_number: "",
     age: "",
     email: "",
     citizenship: "",
@@ -62,21 +62,31 @@ const closeModal = () => {
     form.reset();
 };
 
-const openModal = (cat, userID) => {
+const openModal = (cat, user) => {
     showModal.value = true;
-    form.catID = cat.id;
+    form.cat_id = cat.id;
     form.catImg = cat.image_path;
     form.catAge = cat.age_category;
     form.catColor = cat.color;
     form.catTags = cat.tags;
     form.catName = cat.name;
-    form.userID = userID;
+    form.user_id = user.id;
+    form.first_name = user.first_name;
+    form.last_name = user.last_name;
+    form.address = user.address;
+    form.phone_number = user.phone_number;
+    form.age = user.age;
+    form.email = user.email;
+    form.citizenship = user.citizenship;
+    form.occupation = user.occupation;
 };
 
 const onSubmit = () => {
     form.jsonRadioQuestion = JSON.stringify(form.radioQuestion);
+    console.log("submit");
     form.post(route("adopts.store"), {
         onSuccess: () => {
+            console.log("finished");
             closeModal();
         },
     });
@@ -95,17 +105,31 @@ defineProps({
                     <h1 class="font-bold text-xl">Apply now</h1>
 
                     <button @click="closeModal" type="button" class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-9 h-9">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-9 h-9"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
                         </svg>
                     </button>
                 </div>
                 <form @submit.prevent="onSubmit" class="px-4">
                     <div class="h-[72vh] overflow-auto">
-                        <div class="flex justify-between items-center gap-2 px-4 py-6">
-                            <img :src="form.catImg" class="w-6/12 rounded-full" />
+                        <div
+                            class="flex justify-between items-center gap-2 px-4 py-6"
+                        >
+                            <img
+                                :src="form.catImg"
+                                class="w-6/12 rounded-full"
+                            />
                             <div class="w-6/12 text-center">
                                 <p class="font-bold">{{ form.catName }}</p>
                                 <p class="">{{ form.catAge }}</p>
@@ -114,117 +138,56 @@ defineProps({
                             </div>
                         </div>
                         <div class="flex justify-center p-4">
-                            <InputError :message="form.errors.catID" />
-                        </div>
-
-                        <div class="flex justify-between items-center gap-3">
-                            <div class="mb-6 w-full">
-                                <label for="fname"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
-                                    Name</label>
-                                <input type="text" id="fname"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.fname" />
-                                <InputError :message="form.errors.fname" />
-                            </div>
-                            <div class="mb-6 w-full">
-                                <label for="lname"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                                    Name</label>
-                                <input type="text" id="lname"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.lname" />
-                                <InputError :message="form.errors.lname" />
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center gap-3">
-                            <div class="mb-6 w-full">
-                                <label for="address"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                <input type="text" id="address"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.address" />
-                                <InputError :message="form.errors.address" />
-                            </div>
-                            <div class="mb-6 w-full">
-                                <label for="number"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
-                                    Number</label>
-                                <input type="number" id="number"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.phoneNumber" />
-                                <InputError :message="form.errors.phoneNumber" />
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center gap-3">
-                            <div class="mb-6 w-full">
-                                <label for="age"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                                <input type="number" id="age"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.age" />
-                                <InputError :message="form.errors.age" />
-                            </div>
-                            <div class="mb-6 w-full">
-                                <label for="email"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
-                                    Address</label>
-                                <input type="email" id="email"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.email" />
-                                <InputError :message="form.errors.email" />
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center gap-3">
-                            <div class="mb-6 w-full">
-                                <label for="citizenship"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Citizenship</label>
-                                <input type="text" id="citizenship"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.citizenship" />
-                                <InputError :message="form.errors.citizenship" />
-                            </div>
-                            <div class="mb-6 w-full">
-                                <label for="occupation"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Occupation</label>
-                                <input type="text" id="occupation"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    v-model="form.occupation" />
-                                <InputError :message="form.errors.occupation" />
-                            </div>
+                            <InputError :message="form.errors.cat_id" />
                         </div>
                         <div v-for="question in form.radioQuestion">
-                            <label for="occupation"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
-        question.question
-}}</label>
+                            <label
+                                for="occupation"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                >{{ question.question }}</label
+                            >
                             <div class="flex items-start mb-6">
                                 <div class="flex items-center mb-4">
-                                    <input v-model="question.answer" id="readio-yes" type="radio" :value="true"
+                                    <input
+                                        v-model="question.answer"
+                                        id="readio-yes"
+                                        type="radio"
+                                        :value="true"
                                         :name="question.question"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label for="readio-yes-1"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    />
+                                    <label
+                                        for="readio-yes-1"
+                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                        >Yes</label
+                                    >
                                 </div>
                             </div>
                             <div class="flex items-start mb-6">
                                 <div class="flex items-center mb-4">
-                                    <input v-model="question.answer" id="radio-no" type="radio" :value="false"
+                                    <input
+                                        v-model="question.answer"
+                                        id="radio-no"
+                                        type="radio"
+                                        :value="false"
                                         :name="question.question"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label for="radio-no"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    />
+                                    <label
+                                        for="radio-no"
+                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                        >No</label
+                                    >
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex justify-end py-1 px-4">
-                        <button type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button
+                            type="submit"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
                             Submit
                         </button>
                     </div>
@@ -241,18 +204,31 @@ defineProps({
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-[#D0EEE8] overflow-hidden shadow-xl sm:rounded-lg p-4">
+                <div
+                    class="bg-[#D0EEE8] overflow-hidden shadow-xl sm:rounded-lg p-4"
+                >
                     <div class="flex justify-end items-center">
-                        <Link :href="route('adopts.create')" type="button"
-                            class="inline-flex items-center px-4 py-2 bg-[#5CC2AC] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-[#3D8172] hover:text-white active:bg-[#3D8172] focus:outline-none focus:border-[#3D8172] focus:ring focus:ring-[#28564C] disabled:opacity-25 transition">
-                        <h2>My Adoption Request</h2>
+                        <Link
+                            :href="route('adopts.create')"
+                            type="button"
+                            class="inline-flex items-center px-4 py-2 bg-[#5CC2AC] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-[#3D8172] hover:text-white active:bg-[#3D8172] focus:outline-none focus:border-[#3D8172] focus:ring focus:ring-[#28564C] disabled:opacity-25 transition"
+                        >
+                            <h2>My Adoption Request</h2>
                         </Link>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center">
-                        <button @click="openModal(cat, $page.props.user.id)" v-for="cat in cats"
-                            class="bg-slate-100 p-4 border-2 rounded-xl m-2 drop-shadow-md">
-                            <img class="w-stretch object-fit rounded-xl" :src="cat.image_path" />
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center"
+                    >
+                        <button
+                            @click="openModal(cat, $page.props.user)"
+                            v-for="cat in cats"
+                            class="bg-slate-100 p-4 border-2 rounded-xl m-2 drop-shadow-md"
+                        >
+                            <img
+                                class="w-stretch object-fit rounded-xl"
+                                :src="cat.image_path"
+                            />
                             <div class="text-start mt-4">
                                 <p class="text-lg">
                                     <span class="font-bold">Cat ID: </span>
@@ -268,8 +244,11 @@ defineProps({
                                 </p>
                                 <p class="">
                                     <span class="font-bold"> Tags: </span>
-                                    <span class="keep-all px-2 mx-1 rounded-full text-sm bg-slate-400"
-                                        v-for="tag in cat.tags.split(',')">{{ tag }}</span>
+                                    <span
+                                        class="keep-all px-2 mx-1 rounded-full text-sm bg-slate-400"
+                                        v-for="tag in cat.tags.split(',')"
+                                        >{{ tag }}</span
+                                    >
                                 </p>
                                 <p class="">
                                     <span class="font-bold">Color: </span>

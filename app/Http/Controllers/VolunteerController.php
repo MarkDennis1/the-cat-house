@@ -24,10 +24,11 @@ class VolunteerController extends Controller
                 'volunteers' => $volunteers->map(function ($volunteer) {
                     return [
                         'id' => $volunteer->id,
+                        'user_id' => $volunteer->user_id,
                         'first_name' => $volunteer->first_name,
                         'last_name' => $volunteer->last_name,
                         'address' => $volunteer->address,
-                        'number' => $volunteer->number,
+                        'phone_number' => $volunteer->phone_number,
                         'occupation' => $volunteer->occupation,
                         'email' => $volunteer->email,
                         'age' => $volunteer->age,
@@ -46,7 +47,7 @@ class VolunteerController extends Controller
                         'first_name' => $volunteer->first_name,
                         'last_name' => $volunteer->last_name,
                         'address' => $volunteer->address,
-                        'number' => $volunteer->number,
+                        'phone_number' => $volunteer->phone_number,
                         'occupation' => $volunteer->occupation,
                         'email' => $volunteer->email,
                         'age' => $volunteer->age,
@@ -85,31 +86,15 @@ class VolunteerController extends Controller
      */
     public function store(Request $request)
     {
-        //first_name
-        // last_name
-        // address
-        // number
-        // occupation
-        // email
-        // age
-        // interested_in
-        // experience
         $request->validate([
-            'first_name' => 'required|max:50',
-            'last_name' => 'required|max:50',
-            'address' => 'required|max:100',
-            'number' => 'required|min:11|max:11',
-            'occupation' => 'required|max:50',
-            'email' => 'required',
-            'age' => 'required',
-            'experience' => 'required|max:1000',
+            'json_interested_in' => 'required',
         ]);
         $volunteer = new Volunteer();
         $volunteer->user_id = Auth::id();
         $volunteer->first_name = $request->first_name;
         $volunteer->last_name = $request->last_name;
         $volunteer->address = $request->address;
-        $volunteer->number = $request->number;
+        $volunteer->phone_number = $request->phone_number;
         $volunteer->occupation = $request->occupation;
         $volunteer->email = $request->email;
         $volunteer->age = $request->age;
@@ -117,7 +102,7 @@ class VolunteerController extends Controller
         $volunteer->experience = $request->experience;
         $volunteer->save();
 
-        return  redirect()->route('volunteers.index');
+        // return  redirect()->route('volunteers.index');
     }
 
     /**
@@ -153,27 +138,15 @@ class VolunteerController extends Controller
     {
         //
         $request->validate([
-            'first_name' => 'required|max:50',
-            'last_name' => 'required|max:50',
-            'address' => 'required|max:100',
-            'number' => 'required|max:11',
-            'occupation' => 'required|max:50',
-            'email' => 'required',
-            'age' => 'required',
-            'experience' => 'required|max:1000',
+            'json_interested_in' => 'required',
         ]);
 
         $volunteer->update([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'address' => $request->address,
-            'number' => $request->number,
-            'occupation' => $request->occupation,
-            'email' => $request->email,
-            'age' => $request->age,
             'interested_in' => $request->json_interested_in,
             'experience' => $request->experience,
         ]);
+
+        // dd($volunteer);
 
         return  redirect()->route('volunteers.index');
     }

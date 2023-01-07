@@ -17,6 +17,7 @@ const form = useForm({
     tags: "",
     color: "",
     image_path: "",
+    description:"",
 });
 
 const showModal = ref(false);
@@ -34,6 +35,7 @@ const openModal = (isEdit, cat = null) => {
         form.tags = cat.tags;
         form.color = cat.color;
         form.image_path = cat.image_path;
+        form.description = cat.description
     } else {
         form.title = "Add New Cat";
     }
@@ -148,7 +150,8 @@ defineProps({
                             (optional)</label>
                         <textarea id="comment" rows="4"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Cat short description..."></textarea>
+                            placeholder="Cat short description..."
+                            v-model="form.description"></textarea>
                     </div>
                 </div>
                 <div class="flex items-center justify-end py-4 px-6">

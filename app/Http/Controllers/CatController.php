@@ -28,6 +28,7 @@ class CatController extends Controller
                     'age_category' => $cat->age_category,
                     'tags' => $cat->tags,
                     'color' => $cat->color,
+                    'description' => $cat->description,
                     'image_path' => asset('storage/' . $cat->image_path),
                 ];
             })
@@ -74,6 +75,7 @@ class CatController extends Controller
         $cat->tags = $request->tags;
         $cat->color = $request->color;
         $cat->image_path = $image;
+        $cat->description = $request->description;
         $cat->save();
 
         return  redirect()->route('cats.index');

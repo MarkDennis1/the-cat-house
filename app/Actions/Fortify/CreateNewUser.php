@@ -21,14 +21,27 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:11', 'max:11'],
+            'age' => ['required', 'string', 'max:2'],
+            'citizenship' => ['required', 'string', 'max:255'],
+            'occupation' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
         return User::create([
-            'name' => $input['name'],
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
+            'address' => $input['address'],
+            'phone_number' => $input['phone_number'],
+            'age' => $input['age'],
+            'citizenship' => $input['citizenship'],
+            'occupation' => $input['occupation'],
+            'name' => $input['first_name'] . ' ' . $input['last_name'],
             'role' => 'client',
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
