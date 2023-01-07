@@ -90,25 +90,17 @@ class AdoptController extends Controller
     {
         $request->validate([
             'catID' => 'unique:adopts,cat_id,NULL,id,user_id,' . Auth::id(),
-            'fname' => 'required',
-            'lname' => 'required',
-            'address' => 'required',
-            'phoneNumber' => 'required|min:11|max:11',
-            'age' => 'required',
-            'email' => 'required',
-            'citizenship' => 'required',
-            'occupation' => 'required',
         ]);
 
         $user = DB::table('adopts')->where('cat_id', $request->catID)->first();
         if (empty($user)) {
             $adopt = new Adopt();
-            $adopt->cat_id = $request->catID;
-            $adopt->user_id = $request->userID;
-            $adopt->first_name = $request->fname;
-            $adopt->last_name = $request->lname;
+            $adopt->cat_id = $request->cat_id;
+            $adopt->user_id = $request->user_id;
+            $adopt->first_name = $request->first_name;
+            $adopt->last_name = $request->last_name;
             $adopt->address = $request->address;
-            $adopt->phone_number = $request->phoneNumber;
+            $adopt->phone_number = $request->phone_number;
             $adopt->age = $request->age;
             $adopt->email = $request->email;
             $adopt->citizenship = $request->citizenship;
