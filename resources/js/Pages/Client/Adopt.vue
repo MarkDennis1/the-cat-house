@@ -79,6 +79,7 @@ const openModal = (cat, user) => {
     form.email = user.email;
     form.citizenship = user.citizenship;
     form.occupation = user.occupation;
+    console.log(form.catImg);
 };
 
 const onSubmit = () => {
