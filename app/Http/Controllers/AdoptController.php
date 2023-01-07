@@ -76,7 +76,21 @@ class AdoptController extends Controller
             ->where('adopts.user_id', '=', Auth::id())
             ->get();
         return Inertia::render('Client/AdoptRequest', [
-            'adopts' => $adopts
+            'adopts' => $adopts->map(function ($adopt) {
+                return [
+                    'id' => $adopt->id,
+                    'first_name' => $adopt->first_name,
+                    'last_name' => $adopt->last_name,
+                    'phone_number' => $adopt->phone_number,
+                    'email' => $adopt->email,
+                    'cat_id' => $adopt->cat_id,
+                    'cat_name' => $adopt->cat_name,
+                    'cat_image' => asset('storage/' . $adopt->cat_image),
+                    'address' => $adopt->address,
+                    'is_accepted' => $adopt->is_accepted,
+                    'appointment' => $adopt->appointment,
+                ];
+            })
         ]);
     }
 
