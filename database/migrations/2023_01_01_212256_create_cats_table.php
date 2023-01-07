@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('age_category');
             $table->string('tags');
             $table->string('color');
+            $table->text('description');
             $table->string('image_path');
             $table->timestamps();
         });
