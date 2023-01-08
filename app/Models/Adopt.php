@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Adopt extends Model
 {
     use HasFactory;
-    
+
+    protected $fillable = [
+        'is_accepted',
+    ];
 }

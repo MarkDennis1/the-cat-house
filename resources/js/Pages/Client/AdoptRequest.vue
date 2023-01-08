@@ -35,6 +35,8 @@ const openModal = (adopt) => {
     form.animal_id = adopt.cat_id;
     form.animal_name = adopt.cat_name;
     form.animal_image = adopt.cat_image;
+    form.address = adopt.address;
+    console.log(form.animal_image);
 };
 
 const closeModal = () => {
@@ -262,11 +264,12 @@ defineProps({
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-[#D0EEE8] overflow-hidden shadow-xl sm:rounded-lg">
+                <div
+                    class="bg-[#D0EEE8] overflow-hidden shadow-xl sm:rounded-lg"
+                >
                     <div
                         class="overflow-x-auto relative shadow-md sm:rounded-lg"
                     >
-                        
                         <table
                             class="w-full text-sm text-left text-gray-500 -gray-400"
                         >
