@@ -119,11 +119,6 @@
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <div class="mt-10 flex flex-col gap-3 md:px-20 md:gap-5 lg:px-40 lg:flex-row">
                         <div class="bg-slate-100 px-3 py-3 rounded-lg border dark:bg-slate-800">
                             <p class="mb-3 font-semibold uppercase">Donate</p>
@@ -162,11 +157,6 @@
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10 ">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <div class="px-20 flex gap-20">
                         <div>
                             <p class="mb-2 text-lg font-semibold uppercase tracking-wider text-left">

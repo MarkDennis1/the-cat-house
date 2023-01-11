@@ -126,9 +126,6 @@
                 </div>
 
                 <div class="text-center mt-20 px-10 pb-10">
-                    <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                    <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0 md:my-10 dark:bg-white" />
-
                     <div class="md:px-20 lg:px-40 lg:flex lg:gap-5">
                         <div
                             class="bg-slate-100 h-[250px] mt-10 py-3 rounded-lg border space-y-3 dark:bg-slate-800 md:h-[200px] lg:h-[400px] lg:mt-5">
@@ -170,31 +167,10 @@
                                 <li>vaccinated agaist upper respiratory viruses</li>
                             </ul>
                         </div>
-
-                        <div
-                            class="bg-slate-100 h-[250px] mt-5 py-3 rounded-lg border space-y-3 dark:bg-slate-800 md:h-[200px] lg:h-[400px]">
-                            <p class="text-base font-semibold text-center uppercase tracking-wider">
-                                Adoption fees
-                            </p>
-                            <ul class="mx-12 list-disc text-left">
-                                <li>
-                                    cats under 8 months: <span class="font-semibold">1,500</span>
-                                </li>
-                                <li>
-                                    cats age seven years old/older:
-                                    <span class="font-semibold">1,200</span>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10 ">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <div class="px-20 flex gap-20">
                         <div>
                             <p class="mb-2 text-lg font-semibold uppercase tracking-wider text-left">

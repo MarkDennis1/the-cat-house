@@ -210,6 +210,10 @@ defineProps({
                     </div>
 
                     <div class="m-6">
+                        <label
+                            class="block mb-2 text-sm font-medium text-gray-900"
+                            >Date and Time (Monday - Friday / 8am - 5pm)</label
+                        >
                         <div class="relative">
                             <div
                                 class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"

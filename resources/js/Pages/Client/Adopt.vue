@@ -107,31 +107,17 @@ defineProps({
                     <h1 class="font-bold text-xl">Apply now</h1>
 
                     <button @click="closeModal" type="button" class="">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-9 h-9"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-9 h-9">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </button>
                 </div>
                 <form @submit.prevent="onSubmit" class="px-4">
                     <div class="h-[72vh] overflow-auto">
-                        <div
-                            class="flex justify-between items-center gap-2 px-4 py-6"
-                        >
-                            <img
-                                :src="form.catImg"
-                                class="w-6/12 rounded-full"
-                            />
+                        <div class="flex justify-between items-center gap-2 px-4 py-6">
+                            <img :src="form.catImg" class="w-6/12 rounded-full" />
                             <div class="w-6/12 text-center">
                                 <p class="font-bold">{{ form.catName }}</p>
                                 <p class="">{{ form.catAge }}</p>
@@ -143,67 +129,43 @@ defineProps({
                             <InputError :message="form.errors.cat_id" />
                         </div>
                         <div v-for="question in form.radioQuestion">
-                            <label
-                                for="occupation"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                >{{ question.question }}</label
-                            >
+                            <label for="occupation"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
+                                    question.question
+                                }}</label>
                             <div class="flex items-start mb-6">
                                 <div class="flex items-center mb-4">
-                                    <input
-                                        v-model="question.answer"
-                                        id="readio-yes"
-                                        type="radio"
-                                        :value="true"
+                                    <input v-model="question.answer" id="readio-yes" type="radio" :value="true"
                                         :name="question.question"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                    />
-                                    <label
-                                        for="readio-yes-1"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                        >Yes</label
-                                    >
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label for="readio-yes-1"
+                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
                                 </div>
                             </div>
                             <div class="flex items-start mb-6">
                                 <div class="flex items-center mb-4">
-                                    <input
-                                        v-model="question.answer"
-                                        id="radio-no"
-                                        type="radio"
-                                        :value="false"
+                                    <input v-model="question.answer" id="radio-no" type="radio" :value="false"
                                         :name="question.question"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                    />
-                                    <label
-                                        for="radio-no"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                        >No</label
-                                    >
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label for="radio-no"
+                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-6 ml-3">
+                            <p class="mb-3 text-sm italic">
+                                The adopter agree to adopt a cat and
+                                will take good care of it, you are not allowed to sell the cat,give away or dispose in
+                                any other manner or you will be punished.
+                            </p>
                             <div class="flex items-center mb-4">
-                                <input
-                                    v-model="form.terms"
-                                    id="checkbox-terms"
-                                    type="checkbox"
-                                    :value="false"
+                                <input v-model="form.terms" id="checkbox-terms" type="checkbox" :value="false"
                                     name="terms"
-                                    class="outline-0 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                />
-                                <label
-                                    for="checkbox-terms"
-                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                    >Accept
-                                    <a
-                                        :href="route('terms-and-condition')"
-                                        target="_blank"
-                                        class="text-blue-500"
-                                        >Terms and Condition</a
-                                    ></label
-                                >
+                                    class="outline-0 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <label for="checkbox-terms"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Accept
+                                    <a :href="route('terms-and-condition')" target="_blank" class="text-blue-500">Terms
+                                        and Condition</a></label>
                             </div>
                         </div>
 
@@ -212,10 +174,8 @@ defineProps({
                         </div>
 
                         <div class="flex justify-end py-1 px-4">
-                            <button
-                                type="submit"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            >
+                            <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Submit
                             </button>
                         </div>
@@ -233,31 +193,18 @@ defineProps({
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div
-                    class="bg-[#D0EEE8] overflow-hidden shadow-xl sm:rounded-lg p-4"
-                >
+                <div class="bg-[#D0EEE8] overflow-hidden shadow-xl sm:rounded-lg p-4">
                     <div class="flex justify-end items-center">
-                        <Link
-                            :href="route('adopts.create')"
-                            type="button"
-                            class="inline-flex items-center px-4 py-2 bg-[#5CC2AC] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-[#3D8172] hover:text-white active:bg-[#3D8172] focus:outline-none focus:border-[#3D8172] focus:ring focus:ring-[#28564C] disabled:opacity-25 transition"
-                        >
-                            <h2>My Adoption Request</h2>
+                        <Link :href="route('adopts.create')" type="button"
+                            class="inline-flex items-center px-4 py-2 bg-[#5CC2AC] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-[#3D8172] hover:text-white active:bg-[#3D8172] focus:outline-none focus:border-[#3D8172] focus:ring focus:ring-[#28564C] disabled:opacity-25 transition">
+                        <h2>My Adoption Request</h2>
                         </Link>
                     </div>
 
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center"
-                    >
-                        <button
-                            @click="openModal(cat, $page.props.user)"
-                            v-for="cat in cats"
-                            class="bg-slate-100 p-4 border-2 rounded-xl m-2 drop-shadow-md"
-                        >
-                            <img
-                                class="w-stretch object-fit rounded-xl"
-                                :src="cat.image_path"
-                            />
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center">
+                        <button @click="openModal(cat, $page.props.user)" v-for="cat in cats"
+                            class="bg-slate-100 p-4 border-2 rounded-xl m-2 drop-shadow-md">
+                            <img class="w-stretch object-fit rounded-xl" :src="cat.image_path" />
                             <div class="text-start mt-4">
                                 <p class="text-lg">
                                     <span class="font-bold">Cat ID: </span>
@@ -273,11 +220,8 @@ defineProps({
                                 </p>
                                 <p class="">
                                     <span class="font-bold"> Tags: </span>
-                                    <span
-                                        class="keep-all px-2 mx-1 rounded-full text-sm bg-slate-400"
-                                        v-for="tag in cat.tags.split(',')"
-                                        >{{ tag }}</span
-                                    >
+                                    <span class="keep-all px-2 mx-1 rounded-full text-sm bg-slate-400"
+                                        v-for="tag in cat.tags.split(',')">{{ tag }}</span>
                                 </p>
                                 <p class="">
                                     <span class="font-bold">Color: </span>

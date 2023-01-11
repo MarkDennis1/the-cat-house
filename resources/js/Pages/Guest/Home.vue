@@ -124,10 +124,6 @@
 
                 <div class="px-10 pb-20 text-center">
                     <div>
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-                    <div>
                         <p class="text-xl font-semibold uppercase">Happy National Cat Day</p>
                         <p>We will be live on Unang Hirit August 08, 2022 <br>
                             Tantan rescue story will be featured ABANGAN !!!
@@ -139,11 +135,6 @@
                 </div>
 
                 <div class="text-center">
-                    <div class="px-10">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <p class="text-xl font-semibold uppercase rounded-lg">Featured cats</p>
 
                     <div class="px-10 pb-10 flex justify-around gap-5">
@@ -200,11 +191,6 @@
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10 ">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <p class="text-xl font-semibold uppercase">
                         See how you can help us
                     </p>
@@ -246,11 +232,6 @@
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10 ">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <div class="px-20 flex gap-20">
                         <div>
                             <p class="mb-2 text-lg font-semibold uppercase tracking-wider text-left">

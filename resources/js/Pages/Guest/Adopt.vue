@@ -198,11 +198,6 @@
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <p class="mb-10 text-xl font-semibold uppercase">
                         Rescue story of cat Evie
                     </p>
@@ -235,10 +230,6 @@
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                             <div class="overflow-hidden sm:rounded-lg p-4">
@@ -291,11 +282,6 @@
                 </div>
 
                 <div class="mt-20 pb-10 text-center">
-                    <div class="px-10">
-                        <p class="mb-[-5px] tracking-widest">ฅ^•ﻌ•^ฅ</p>
-                        <hr class="bg-black w-full h-1 mb-10 mx-auto rounded border-0" />
-                    </div>
-
                     <div class="px-20 flex gap-20">
                         <div>
                             <p class="mb-2 text-lg font-semibold uppercase tracking-wider text-left">
