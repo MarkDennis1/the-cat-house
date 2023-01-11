@@ -26,6 +26,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'age' => ['required', 'string', 'max:2'],
             'citizenship' => ['required', 'string', 'max:255'],
             'occupation' => ['required', 'string', 'max:255'],
+            'security_question' => ['required', 'string', 'max:255'],
+            'security_answer' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
@@ -48,6 +50,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'age' => $input['age'],
                 'citizenship' => $input['citizenship'],
                 'occupation' => $input['occupation'],
+                'security_question' => $input['security_question'],
+                'security_answer' => $input['security_answer'],
                 'name' => $input['first_name'] . ' ' . $input['last_name'],
                 'email' => $input['email'],
             ])->save();

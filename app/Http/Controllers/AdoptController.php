@@ -41,6 +41,7 @@ class AdoptController extends Controller
                 })
             ]);
         } else {
+            
             $cats = Cat::all();
             return Inertia::render('Client/Adopt', [
                 'cats' => $cats->map(function ($cat) {

@@ -10,6 +10,14 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 
+const securityQuestion = [
+    "What was the street name you lived in as a child?",
+    "What primary school did you attend?",
+    "In what city or town was your first job?",
+    "What was the make and model of your first car?",
+    "What is your oldest cousin's first and last name?",
+];
+
 const props = defineProps({
     user: Object,
 });
@@ -24,6 +32,8 @@ const form = useForm({
     age: props.user.age,
     citizenship: props.user.citizenship,
     occupation: props.user.occupation,
+    security_question: props.user.security_question,
+    security_answer: props.user.security_answer,
     email: props.user.email,
     photo: null,
 });
@@ -172,11 +182,6 @@ const clearPhotoFileInput = () => {
                 <InputError :message="form.errors.last_name" class="mt-2" />
             </div>
 
-            
-
-
-
-
             <!-- Address -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="address" value="Address" />
@@ -224,6 +229,44 @@ const clearPhotoFileInput = () => {
                     autocomplete="citizenship"
                 />
                 <InputError :message="form.errors.citizenship" class="mt-2" />
+            </div>
+            <!-- Security Questoiin -->
+            <div class="col-span-6 sm:col-span-4">
+                <label
+                    for="countries"
+                    class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >Select a security question</label
+                >
+                <select
+                    v-model="form.security_question"
+                    id="countries"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                    <option
+                        v-for="question in securityQuestion"
+                        :value="question"
+                    >
+                        {{ question }}
+                    </option>
+                </select>
+            </div>
+
+            <InputError class="mt-2" :message="form.errors.security_question" />
+            <!-- Security Answer -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="security_answer" value="Security Answer" />
+                <TextInput
+                    id="security_answer"
+                    v-model="form.security_answer"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="security_answer"
+                />
+                <InputError
+                    class="mt-2"
+                    :message="form.errors.security_answer"
+                />
             </div>
             <!-- Occupation -->
             <div class="col-span-6 sm:col-span-4">

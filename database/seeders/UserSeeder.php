@@ -27,8 +27,10 @@ class UserSeeder extends Seeder
             'occupation' => 'Administrative Support',
             'name' => 'Admin Doe',
             'role' => 'admin',
-            'email' => 'administrator@tch.com',
+            'email' => 'admin@tch.com',
             'password' => Hash::make('Password123'),
+            'security_question' => 'What primary school did you attend?',
+            'security_answer' => 'fake primary school',
 
         ]);
 
@@ -47,6 +49,8 @@ class UserSeeder extends Seeder
             'role' => 'client',
             'email' => 'client@tch.com',
             'password' => Hash::make('Password123'),
+            'security_question' => 'What primary school did you attend?',
+            'security_answer' => 'fake primary school',
         ]);
     }
 }

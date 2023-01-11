@@ -414,10 +414,6 @@ const form = useForm({
             question: "Is the cat for yourself?",
             answer: false,
         },
-        {
-            question: "Are you 18 years old and above?",
-            answer: false,
-        },
         // {
         //     question: "If not, please profive your parent or guardian's name?",
         //     answer: "",

@@ -15,6 +15,7 @@ const form = useForm({
     current_password: '',
     password: '',
     password_confirmation: '',
+    password_reset: false,
 });
 
 const updatePassword = () => {

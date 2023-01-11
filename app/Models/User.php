@@ -12,11 +12,9 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
-    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +30,8 @@ class User extends Authenticatable
         'citizenship',
         'occupation',
         'name',
+        'security_question',
+        'security_answer',
         'email',
         'password',
     ];

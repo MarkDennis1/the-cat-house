@@ -2,11 +2,18 @@
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import AuthenticationCard from "@/Components/AuthenticationCard.vue";
 import AuthenticationCardLogo from "@/Components/AuthenticationCardLogo.vue";
-import Checkbox from "@/Components/Checkbox.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
+
+const securityQuestion = [
+    "What was the street name you lived in as a child?",
+    "What primary school did you attend?",
+    "In what city or town was your first job?",
+    "What was the make and model of your first car?",
+    "What is your oldest cousin's first and last name?",
+];
 
 const form = useForm({
     first_name: "",
@@ -19,6 +26,8 @@ const form = useForm({
     email: "",
     password: "",
     password_confirmation: "",
+    security_question: "",
+    security_answer: "",
     terms: false,
 });
 
@@ -143,6 +152,36 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
+            <label
+                for="countries"
+                class="mt-4 block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Select a security question</label
+            >
+            <select
+                v-model="form.security_question"
+                id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+                <option v-for="question in securityQuestion" :value="question">
+                    {{ question }}
+                </option>
+            </select>
+            <InputError class="mt-2" :message="form.errors.security_question" />
+            <div class="mt-4">
+                <InputLabel for="security_answer" value="Security Answer" />
+                <TextInput
+                    id="security_answer"
+                    v-model="form.security_answer"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="security_answer"
+                />
+                <InputError
+                    class="mt-2"
+                    :message="form.errors.security_answer"
+                />
+            </div>
             <div class="mt-4">
                 <InputLabel for="password" value="Password" />
                 <TextInput
@@ -173,40 +212,6 @@ const submit = () => {
                     class="mt-2"
                     :message="form.errors.password_confirmation"
                 />
-            </div>
-
-            <div
-                v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature"
-                class="mt-4"
-            >
-                <InputLabel for="terms">
-                    <div class="flex items-center">
-                        <Checkbox
-                            id="terms"
-                            v-model:checked="form.terms"
-                            name="terms"
-                            required
-                        />
-
-                        <div class="ml-2">
-                            I agree to the
-                            <a
-                                target="_blank"
-                                :href="route('terms.show')"
-                                class="underline text-sm text-gray-600 hover:text-gray-900"
-                                >Terms of Service</a
-                            >
-                            and
-                            <a
-                                target="_blank"
-                                :href="route('policy.show')"
-                                class="underline text-sm text-gray-600 hover:text-gray-900"
-                                >Privacy Policy</a
-                            >
-                        </div>
-                    </div>
-                    <InputError class="mt-2" :message="form.errors.terms" />
-                </InputLabel>
             </div>
 
             <div class="flex items-center justify-end mt-4">
