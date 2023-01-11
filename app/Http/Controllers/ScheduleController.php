@@ -25,7 +25,7 @@ class ScheduleController extends Controller
                 'schedules' => $schedule
             ]);
         } else {
-            $schedule = Schedule::All();
+            $schedule = DB::table('schedules')->where('user_id', Auth::id())->first();
 
             return Inertia::render('Client/Schedule', [
                 'schedules' => $schedule

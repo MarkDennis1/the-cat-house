@@ -2,7 +2,6 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import BreadCrumbs from "@/Components/BreadCrumbs.vue";
 import { Link } from "@inertiajs/inertia-vue3";
-import LinkButton from '@/Components/LinkButton.vue'
 
 defineProps({
     catCount: Number,

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdoptController;
 use App\Http\Controllers\CatController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\VolunteerController;
 use App\Models\Adopt;
@@ -83,6 +84,12 @@ Route::get('contact-us', function () {
         'canRegister' => Route::has('register'),
     ]);
 })->name('contact-us');
+Route::get('terms-and-condition', function () {
+    return Inertia::render('Client/TermsAndCondition', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+    ]);
+})->name('terms-and-condition');
 
 Route::middleware([
     'auth:sanctum',
@@ -108,3 +115,4 @@ Route::middleware([
     Route::resource('schedules', ScheduleController::class);
     Route::resource('volunteers', VolunteerController::class);
 });
+Route::resource('user-forgot-password', ForgotPasswordController::class);

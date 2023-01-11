@@ -9,6 +9,8 @@ import { Link, useForm } from "@inertiajs/inertia-vue3";
 const showModal = ref(false);
 
 const form = useForm({
+    terms: false,
+    termsError: "",
     cat_id: "",
     catImg: "",
     catName: "",
@@ -35,10 +37,6 @@ const form = useForm({
         },
         {
             question: "Is the cat for yourself?",
-            answer: false,
-        },
-        {
-            question: "Are you 18 years old and above?",
             answer: false,
         },
         // {
@@ -79,18 +77,21 @@ const openModal = (cat, user) => {
     form.email = user.email;
     form.citizenship = user.citizenship;
     form.occupation = user.occupation;
-    console.log(form.catImg);
 };
 
 const onSubmit = () => {
     form.jsonRadioQuestion = JSON.stringify(form.radioQuestion);
-    console.log("submit");
-    form.post(route("adopts.store"), {
-        onSuccess: () => {
-            console.log("finished");
-            closeModal();
-        },
-    });
+    if (form.terms) {
+        form.termsError = "";
+        form.post(route("adopts.store"), {
+            onSuccess: () => {
+                console.log("finished");
+                closeModal();
+            },
+        });
+    } else {
+        form.termsError = "Accept terms and condition before proceeding.";
+    }
 };
 
 defineProps({
@@ -182,15 +183,42 @@ defineProps({
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="mb-6">
+                            <div class="flex items-center mb-4">
+                                <input
+                                    v-model="form.terms"
+                                    id="checkbox-terms"
+                                    type="checkbox"
+                                    :value="false"
+                                    name="terms"
+                                    class="outline-0 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                />
+                                <label
+                                    for="checkbox-terms"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    >Accept
+                                    <a
+                                        :href="route('terms-and-condition')"
+                                        target="_blank"
+                                        class="text-blue-500"
+                                        >Terms and Condition</a
+                                    ></label
+                                >
+                            </div>
+                        </div>
 
-                    <div class="flex justify-end py-1 px-4">
-                        <button
-                            type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >
-                            Submit
-                        </button>
+                        <div class="flex justify-start py-1 px-4">
+                            <InputError :message="form.termsError" />
+                        </div>
+
+                        <div class="flex justify-end py-1 px-4">
+                            <button
+                                type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            >
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

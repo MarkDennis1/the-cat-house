@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('occupation');
             $table->string('name');
             $table->string('role')->default('client');
+            $table->string('security_question');
+            $table->string('security_answer');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
