@@ -6,10 +6,9 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\VolunteerController;
 use App\Models\Adopt;
-use App\Models\Cat;
 use App\Models\Schedule;
 use App\Models\Volunteer;
-use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -46,7 +45,11 @@ Route::get('about-us', function () {
 })->name('about-us');
 
 Route::get('adopt', function () {
-    $cats = Cat::all();
+    $cats = DB::table('cats')
+    ->leftJoin('adopts', 'adopts.cat_id', '=', 'cats.id')
+    ->select('cats.*')
+    ->where('adopts.cat_id', '=', null)
+    ->get();
     return Inertia::render('Guest/Adopt', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -102,7 +105,11 @@ Route::middleware([
 
     Route::get('dashboard', function () {
         return Inertia::render('Dashboard', [
-            'catCount' => Cat::all()->count(),
+            'catCount' => DB::table('cats')
+            ->leftJoin('adopts', 'adopts.cat_id', '=', 'cats.id')
+            ->select('cats.*')
+            ->where('adopts.cat_id', '=', null)
+            ->count(),
             'adoptionCount' => Adopt::all()->count(),
             'scheduleCount' => Schedule::all()->count(),
             'volunteerCount' => Volunteer::all()->count()
