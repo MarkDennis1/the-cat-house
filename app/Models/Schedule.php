@@ -12,8 +12,8 @@ class Schedule extends Model
 
     protected function appointment(): Attribute {
 
-        return new Attribute(
-            get: fn ($value) => $value = date("D M j Y"),
+        return Attribute::make(
+            get: fn ($value) => $value = date("D M j Y", strtotime($value)),
         );
     }
 }
