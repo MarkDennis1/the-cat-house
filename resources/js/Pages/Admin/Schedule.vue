@@ -76,7 +76,7 @@ defineProps({
 </script>
 
 <template>
-    <AppLayout title="schedule">
+    <AppLayout title="Schedule">
         <Modal :show="showModal" maxWidth="lg">
             <div class="flex items-center justify-between px-4 pt-2">
                 <h1 class="font-bold text-xl">{{ form.title }}</h1>

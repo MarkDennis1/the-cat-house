@@ -201,10 +201,10 @@ defineProps({
                         </Link>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
                         <button @click="openModal(cat, $page.props.user)" v-for="cat in cats"
                             class="bg-slate-100 p-4 border-2 rounded-xl m-2 drop-shadow-md">
-                            <img class="w-stretch object-fit rounded-xl" :src="cat.image_path" />
+                            <img class="w-full object-cover rounded-xl" :src="cat.image_path" />
                             <div class="text-start mt-4">
                                 <p class="text-lg">
                                     <span class="font-bold">Cat ID: </span>

@@ -76,7 +76,7 @@ defineProps({
 </script>
 
 <template>
-    <AppLayout title="schedule">
+    <AppLayout title="Schedule">
         <Modal :show="showModal" maxWidth="lg">
             <form @submit.prevent="onSubmit" class="p-4">
                 <div class="flex items-center justify-between">
