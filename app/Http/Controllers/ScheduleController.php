@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schedule;
+use App\Rules\AppointmentWeekend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -65,7 +66,7 @@ class ScheduleController extends Controller
         
         $request->validate([
             'address' => 'required',
-            'appointment' => 'required|date|after:'. date("M j Y"),
+            'appointment' => ['required', 'date', 'after:'. date("M j Y"), new AppointmentWeekend()],
         ]);
 
         $schedule = new Schedule();
