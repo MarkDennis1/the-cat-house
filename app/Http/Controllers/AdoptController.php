@@ -70,12 +70,17 @@ class AdoptController extends Controller
     {
         //
 
-        $adopts = DB::table('adopts')
-            ->join('cats', 'cats.id', '=', 'adopts.cat_id')
-            ->leftJoin('schedules', 'schedules.adopt_id', '=', 'adopts.id')
-            ->select('adopts.*', 'cats.id as cat_id', 'cats.name as cat_name', 'cats.image_path as cat_image', 'schedules.appointment')
-            ->where('adopts.user_id', '=', Auth::id())
-            ->get();
+        // $adopts = DB::table('adopts')
+        //     ->join('cats', 'cats.id', '=', 'adopts.cat_id')
+        //     ->leftJoin('schedules', 'schedules.adopt_id', '=', 'adopts.id')
+        //     ->select('adopts.*', 'cats.id as cat_id', 'cats.name as cat_name', 'cats.image_path as cat_image', 'schedules.appointment')
+        //     ->where('adopts.user_id', '=', Auth::id())
+        //     ->get();
+        $adopts = Adopt::join('cats', 'cats.id', "=", "adopts.cat_id")
+        ->join('schedules', 'schedules.adopt_id', '=', 'adopts.id')
+        ->where('adopts.user_id', '=', Auth::id())
+        ->get(['adopts.*', 'cats.id as cat_id', 'cats.name as cat_name', 'cats.image_path as cat_image', 'schedules.appointment']);
+        dd($adopts);
         return Inertia::render('Client/AdoptRequest', [
             'adopts' => $adopts->map(function ($adopt) {
                 return [

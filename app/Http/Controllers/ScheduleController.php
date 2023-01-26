@@ -25,7 +25,9 @@ class ScheduleController extends Controller
                 'schedules' => $schedule
             ]);
         } else {
-            $schedule = DB::table('schedules')->where('user_id', Auth::id())->get();
+            // $schedule = DB::table('schedules')->where('user_id', Auth::id())->get();
+            $schedule = Schedule::where('user_id', Auth::id())
+                        ->get();
 
             return Inertia::render('Client/Schedule', [
                 'schedules' => $schedule
@@ -60,9 +62,10 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'address' => 'required',
-            'appointment' => 'required',
+            'appointment' => 'required|date|after:'. date("M j Y"),
         ]);
 
         $schedule = new Schedule();
