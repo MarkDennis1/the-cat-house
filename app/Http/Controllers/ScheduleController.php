@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schedule;
+use App\Rules\AppointmentWeekend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,9 @@ class ScheduleController extends Controller
                 'schedules' => $schedule
             ]);
         } else {
-            $schedule = DB::table('schedules')->where('user_id', Auth::id())->get();
+            // $schedule = DB::table('schedules')->where('user_id', Auth::id())->get();
+            $schedule = Schedule::where('user_id', Auth::id())
+                        ->get();
 
             return Inertia::render('Client/Schedule', [
                 'schedules' => $schedule
@@ -60,9 +63,10 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'address' => 'required',
-            'appointment' => 'required',
+            'appointment' => ['required', 'date', 'after:'. date("M j Y"), new AppointmentWeekend()],
         ]);
 
         $schedule = new Schedule();

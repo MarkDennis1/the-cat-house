@@ -42,7 +42,11 @@ class AdoptController extends Controller
             ]);
         } else {
             
-            $cats = Cat::all();
+            $cats = DB::table('cats')
+            ->leftJoin('adopts', 'adopts.cat_id', '=', 'cats.id')
+            ->select('cats.*')
+            ->where('adopts.cat_id', '=', null)
+            ->get();
             return Inertia::render('Client/Adopt', [
                 'cats' => $cats->map(function ($cat) {
                     return [
@@ -76,6 +80,11 @@ class AdoptController extends Controller
             ->select('adopts.*', 'cats.id as cat_id', 'cats.name as cat_name', 'cats.image_path as cat_image', 'schedules.appointment')
             ->where('adopts.user_id', '=', Auth::id())
             ->get();
+        // $adopts = Adopt::join('cats', 'cats.id', "=", "adopts.cat_id")
+        // ->join('schedules', 'schedules.adopt_id', '=', 'adopts.id')
+        // ->where('adopts.user_id', '=', Auth::id())
+        // ->get(['adopts.*', 'cats.id as cat_id', 'cats.name as cat_name', 'cats.image_path as cat_image', 'schedules.appointment']);
+        
         return Inertia::render('Client/AdoptRequest', [
             'adopts' => $adopts->map(function ($adopt) {
                 return [
